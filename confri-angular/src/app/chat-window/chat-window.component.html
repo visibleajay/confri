@@ -1,0 +1,15 @@
+<mat-card style="text-align:start" [ngClass]="{'marginLeft': message.sender, 'marginRight': !message.sender}">
+  <div fxLayout="column">
+    <div fxFlex="80">
+      {{message.text}}
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="end end">    
+      <div fxFlex>
+        {{message.user}}
+      </div>
+      <div class="timeStyle" fxFlex="20">
+        {{message.sentAt | fromNow}}
+      </div>
+    </div>
+  </div>
+</mat-card>

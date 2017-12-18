@@ -1,0 +1,14 @@
+<div class="appBorder appFont" fxLayout="column" style="text-align:center; width: 30vw; height: 90vh; margin: auto">
+  <div class="appBorder" style="background-color: #eaefb1;" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+    Chat Window  
+  </div>
+  <div style="background-color: #eaeaea;" fxLayout="column" class="appBorder" fxLayoutAlign="center center" fxFlex>
+    <div style="width:90%; margin: 5px 0px;" *ngFor="let message of messages">
+      <app-chat-window [message]="message"></app-chat-window>
+    </div>
+  </div>
+  <div style="background-color: #dae3e5;" class="appBorder" fxLayout="row" fxLayoutAlign="center center" fxFlex="10">
+    <input fxFlex="70" type="text" #message placeholder="Type Message" />
+    <button mat-button color="primary">Send</button>
+  </div>
+</div>
