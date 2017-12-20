@@ -8,7 +8,7 @@
     </div>
   </div>
   <div style="background-color: #dae3e5;" class="appBorder" fxLayout="row" fxLayoutAlign="center center" fxFlex="10">
-    <input fxFlex="70" type="text" #message placeholder="Type Message" />
-    <button mat-button color="primary">Send</button>
+    <input fxFlex="70" type="text" #message placeholder="Type Message" (keyup.enter)="postMessages(message.value)" />
+    <button mat-button color="primary" (click)="postMessages(message.value)" >Send</button>
   </div>
 </div>
