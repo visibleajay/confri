@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import 'rxjs/add/operator/map';
 
 import {UserNameDialogComponent} from './user-name-dialog/user-name-dialog.component';
 import {Message} from './chat-window/chat-window.component';
+
+
+import {ChatService} from './service/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,9 @@ export class AppComponent implements OnInit{
 
   name: String;
   messages: Message[];
-  constructor(public dialog: MatDialog, public http: Http) {}
+  connection;
+
+  constructor(public dialog: MatDialog, private chatservice: ChatService) {}
 
   ngOnInit() {
     setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
@@ -35,29 +39,41 @@ export class AppComponent implements OnInit{
       sentAt: new Date(),
       sender: true
     }, {
-      id: 1,
+      id: 2,
       user: 'LiveRock',
       text: 'love you,',
       sentAt: new Date(),
       sender: false
     }, {
-      id: 1,
+      id: 3,
       user: 'Ajay',
       text: 'Rocking on,',
       sentAt: new Date(),
       sender: true
     }, {
-      id: 1,
+      id: 4,
       text: 'loving,',
       user: 'LiveRock',
       sentAt: new Date(),
       sender: false
     }];
+
+    this.connection = this.chatservice.getMessages().subscribe(message => {
+      console.log(message);
+    });
   }
 
-  makeBackendRequest() {
-    this.http.get('http://localhost:8080/getData')
-            .map( (data) => data)
-            .subscribe(data => console.log(data));
+  postMessages(text: String) {
+    this.chatservice.sendMessage(text);
   }
+
+  ngOnDestroy() {
+    this.connection.unsubscribe();
+  }
+
+  // makeBackendRequest() {
+    // this.http.get('http://localhost:8080/getData')
+    //         .map( (data) => data)
+    //         .subscribe(data => console.log(data));
+  // }
 }
