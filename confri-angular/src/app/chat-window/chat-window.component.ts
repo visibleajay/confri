@@ -1,12 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-export interface Message {
-  id: number;
-  user: String;
-  text: String;
-  sentAt: Date;
-  sender: Boolean;
-};
+import {Message} from '../model/message.model';
 
 @Component({
   selector: 'app-chat-window',
