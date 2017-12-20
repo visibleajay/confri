@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/slack/receive', (req,res) => {
-    if(req['body']['event'] && req['body']['event']['text']) {
+    if(req['body']['event'] && req['body']['event']['text'] && !req['body']['event']['subtype']) {
+        console.log('Sending message to backend');
         io.emit('message', { username: USERNAME, message: req['body']['event']['text'] });
     }
     res.send({'challenge': req['body']['challenge']});
