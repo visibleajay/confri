@@ -24,19 +24,26 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.counter = 0;
     this.messages = [];
-    setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
-        width: '250px'
-      });
+    this.openDialog();
+    this.receiveSlackMessage();
+  }
 
-      DIALOG_REF.afterClosed().subscribe((result) => {
-        this.username = result;
-      });
-    }, 0);
-
+  private receiveSlackMessage() {
     this.connection = this.chatservice.getMessages().subscribe(message => {
       const MESSAGE: Message = new Message(++this.counter, message['username'], message['message'], false);
       this.messages.push(MESSAGE); 
     });
+  }
+
+  private openDialog() {
+    setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
+      width: '250px'
+    });
+
+    DIALOG_REF.afterClosed().subscribe((result) => {
+      this.username = result;
+      });
+    }, 0);
   }
 
   postMessages(text: String) {
