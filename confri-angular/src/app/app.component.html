@@ -2,7 +2,7 @@
   <div class="appBorder" style="background-color: #eaefb1;" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
     Chat Window  
   </div>
-  <div style="background-color: #eaeaea;" fxLayout="column" class="appBorder" fxLayoutAlign="center center" fxFlex>
+  <div style="background-color: #eaeaea;" fxLayout="column" class="appBorder overflowYScroll" fxLayoutAlign="center center" fxFlex>
     <div style="width:90%; margin: 5px 0px;" *ngFor="let message of messages">
       <app-chat-window [message]="message"></app-chat-window>
     </div>

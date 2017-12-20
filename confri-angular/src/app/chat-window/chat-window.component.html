@@ -1,6 +1,6 @@
-<mat-card style="text-align:start" [ngClass]="{'marginLeft': message.sender, 'marginRight': !message.sender}">
+<mat-card class="textAlignStart" [ngClass]="{'marginLeft': message.sender, 'marginRight': !message.sender}">
   <div fxLayout="column">
-    <div fxFlex="80">
+    <div fxFlex="80" class="overflowBreakWord">
       {{message.text}}
     </div>
     <div fxFlex fxLayout="column" fxLayoutAlign="end end">    
