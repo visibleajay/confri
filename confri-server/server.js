@@ -15,10 +15,10 @@ const USERNAME = 'LiveRock';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/receive', (req,res) => {
+app.post('/slack/receive', (req,res) => {
     if(req['body']['event'] && req['body']['event']['text']) {
         io.emit('message', { username: USERNAME, message: req['body']['event']['text'] });
-    } 
+    }
     res.send({'challenge': req['body']['challenge']});
 });
 
@@ -26,7 +26,6 @@ app.post('/receive', (req,res) => {
 io.on('connection', (socket) => {
 
     console.log('user connected');
-
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
