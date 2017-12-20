@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/receive', (req,res) => {
-    io.emit('message', { username: USERNAME, message: req['body']['event']['text'] });
+    if(req['body']['event'] && req['body']['event']['text']) {
+        io.emit('message', { username: USERNAME, message: req['body']['event']['text'] });
+    } 
     res.send({'challenge': req['body']['challenge']});
 });
 
