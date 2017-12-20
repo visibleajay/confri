@@ -1,0 +1,19 @@
+{
+  "name": "ConfriServer",
+  "version": "0.0.1",
+  "description": "Use as a server in a chat application.",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@slack/client": "^3.14.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "monk": "^3.1.3",
+    "socket.io": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
