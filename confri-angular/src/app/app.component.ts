@@ -46,10 +46,10 @@ export class AppComponent implements OnInit, OnDestroy{
     }, 0);
   }
 
-  postMessages(text: String) {
-    const MESSAGE: Message = new Message(++this.counter, this.username, text, true);
+  postMessages(message: String) {
+    const MESSAGE: Message = new Message(++this.counter, this.username, message, true);
     this.messages.push(MESSAGE);
-    this.chatservice.sendMessage(text);
+    this.chatservice.sendMessage(message, this.username);
   }
 
   ngOnDestroy() {

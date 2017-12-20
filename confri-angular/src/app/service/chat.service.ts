@@ -9,8 +9,12 @@ export class ChatService {
   private url = 'http://localhost:5000';  
   private socket;
   
-  sendMessage(message){
-    this.socket.emit('add-message', message);    
+  sendMessage(text, username){
+    const MESSAGE_BODY = {
+      text,
+      username
+    }
+    this.socket.emit('add-message', MESSAGE_BODY);    
   }
   
   getMessages() {
