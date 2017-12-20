@@ -34,14 +34,13 @@ export class AppComponent implements OnInit, OnDestroy{
     }, 0);
 
     this.connection = this.chatservice.getMessages().subscribe(message => {
-      console.log(message);
       const MESSAGE: Message = new Message(++this.counter, message['username'], message['message'], false);
       this.messages.push(MESSAGE); 
     });
   }
 
   postMessages(text: String) {
-    const MESSAGE: Message = new Message(++this.counter, this.username, text);
+    const MESSAGE: Message = new Message(++this.counter, this.username, text, true);
     this.messages.push(MESSAGE);
     this.chatservice.sendMessage(text);
   }
