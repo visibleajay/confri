@@ -11,12 +11,13 @@ const request = require('request');
 const URL = process.env.MYWEBHOOKURL;
 const webhook = new IncomingWebhook(URL);
 
+const USERNAME = 'LiveRock';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/receive', (req,res) => {
+    io.emit('message', { username: USERNAME, message: req['body']['event']['text'] });
     res.send({'challenge': req['body']['challenge']});
-    io.emit('message', { type: 'new-message', text: req['body']['event']['text'] });
 });
 
 
@@ -37,7 +38,6 @@ io.on('connection', (socket) => {
               console.log('Received', statusCode, 'from Slack');
             }
         });
-        io.emit('message', { type: 'new-message', text: message });
     });
 });
 
