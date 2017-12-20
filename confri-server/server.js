@@ -32,8 +32,17 @@ io.on('connection', (socket) => {
     });
 
     socket.on('add-message', (message) => {
-        console.log('add message');
-        webhook.send(message, function(err, header, statusCode, body) {
+        //  Build JSON to send to slack
+        const PAYLOAD = {
+            'attachments' : [
+                {
+                    "color" : '#eaefb1',
+                    "title"	: message['username'],
+                    "text"	: message['text']
+                }
+            ]
+        }
+        webhook.send(PAYLOAD, function(err, header, statusCode, body) {
             if (err) {
               console.log('Error:', err);
             } else {
