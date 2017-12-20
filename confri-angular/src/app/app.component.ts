@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import 'rxjs/add/operator/map';
 
 import {UserNameDialogComponent} from './user-name-dialog/user-name-dialog.component';
-import {Message} from './chat-window/chat-window.component';
-
+import {Message} from './model/message.model';
 
 import {ChatService} from './service/chat.service';
 
@@ -13,57 +12,37 @@ import {ChatService} from './service/chat.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
 
-  name: String;
+  private counter:number;
+  username: String;
   messages: Message[];
   connection;
 
   constructor(public dialog: MatDialog, private chatservice: ChatService) {}
 
   ngOnInit() {
+    this.counter = 0;
+    this.messages = [];
     setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
-        width: '250px',
-        data: {name: this.name}
+        width: '250px'
       });
 
       DIALOG_REF.afterClosed().subscribe((result) => {
-        this.name = result;
+        this.username = result;
       });
     }, 0);
 
-    this.messages = [{
-      id: 1,
-      user: 'Ajay',
-      text: 'Rocking on,',
-      sentAt: new Date(),
-      sender: true
-    }, {
-      id: 2,
-      user: 'LiveRock',
-      text: 'love you,',
-      sentAt: new Date(),
-      sender: false
-    }, {
-      id: 3,
-      user: 'Ajay',
-      text: 'Rocking on,',
-      sentAt: new Date(),
-      sender: true
-    }, {
-      id: 4,
-      text: 'loving,',
-      user: 'LiveRock',
-      sentAt: new Date(),
-      sender: false
-    }];
-
     this.connection = this.chatservice.getMessages().subscribe(message => {
       console.log(message);
+      const MESSAGE: Message = new Message(++this.counter, message['username'], message['message'], false);
+      this.messages.push(MESSAGE); 
     });
   }
 
   postMessages(text: String) {
+    const MESSAGE: Message = new Message(++this.counter, this.username, text);
+    this.messages.push(MESSAGE);
     this.chatservice.sendMessage(text);
   }
 
