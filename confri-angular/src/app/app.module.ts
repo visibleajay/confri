@@ -13,6 +13,7 @@ import { FromNowPipe } from './pipes/from-now.pipe';
 
 
 import {ChatService} from './service/chat.service';
+import {MessagesService} from './service/message.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {ChatService} from './service/chat.service';
     FlexLayoutModule,
     MatCardModule
   ],
-  providers: [ChatService],
+  providers: [ChatService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
