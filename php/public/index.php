@@ -1,18 +1,27 @@
 <?php
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
+    $servername = "localhost";
+    $username = "testuser";
+    $password = "password";
+    $dbname = "testdb";
 
-require '../vendor/autoload.php';
+    try {
 
-$app = new \Slim\App;
-/*$app->get('/hello/{name}', function (Request $request, Response $response) {
-    $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, $name");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-    return $response;
-});*/
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$app->get('/getData', function(Request $request, Response $response) use ($app) {
-    return "Rock On";
-});
-$app->run();
+        $sql = "INSERT INTO customers (first_name, last_name)
+        VALUES ('$_POST[fname]', '$_POST[lname]')";
+        
+        // use exec() because no results are returned
+        $conn->exec($sql);
+        echo "New record created successfully";
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+
+    $conn = null;
+?>
