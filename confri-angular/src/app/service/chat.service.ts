@@ -9,6 +9,7 @@ export class ChatService {
   private url = 'http://localhost:5000';  
   private socket;
   
+  // send message to the server.
   sendMessage(text, username){
     const MESSAGE_BODY = {
       text,
@@ -17,6 +18,9 @@ export class ChatService {
     this.socket.emit('add-message', MESSAGE_BODY);    
   }
   
+  // receive message from the server.
+  // create an observable which would get triggered when a message is encountered
+  // from the server.
   getMessages() {
     let observable = new Observable(observer => {
       this.socket = io(this.url);
@@ -25,8 +29,8 @@ export class ChatService {
       });
       return () => {
         this.socket.disconnect();
-      };  
-    })     
+      };
+    })   
     return observable;
   }  
 }

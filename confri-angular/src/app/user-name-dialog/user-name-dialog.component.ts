@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -6,12 +6,9 @@ import { MatDialogRef } from '@angular/material';
   templateUrl: './user-name-dialog.component.html',
   styleUrls: ['./user-name-dialog.component.css']
 })
-export class UserNameDialogComponent implements OnInit {
+export class UserNameDialogComponent{
 
   constructor(public dialogRef: MatDialogRef<UserNameDialogComponent>) { }
-
-  ngOnInit() {
-  }
 
   closeDialog(text: String) {
     this.dialogRef.close(text);

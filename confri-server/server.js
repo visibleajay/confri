@@ -23,7 +23,7 @@ app.post('/slack/receive', (req,res) => {
     res.send({'challenge': req['body']['challenge']});
 });
 
-
+// socket io connection for sending and receiving data from frontend.
 io.on('connection', (socket) => {
 
     console.log('user connected');

@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
-import {UserNameDialogComponent} from './user-name-dialog/user-name-dialog.component';
-import {Message} from './model/message.model';
+import 'rxjs/add/operator/map';
 
-import {ChatService} from './service/chat.service';
+import { UserNameDialogComponent } from './user-name-dialog/user-name-dialog.component';
+import { Message } from './model/message.model';
+
+import { ChatService } from './service/chat.service';
 import { MessagesService } from './service/message.service';
 
 @Component({
@@ -20,7 +21,10 @@ export class AppComponent implements OnInit, OnDestroy{
   messages: Observable<Message[]>;
   connection;
 
-  constructor(public dialog: MatDialog, private messageService: MessagesService, private chatservice: ChatService, private el: ElementRef) {}
+  constructor(public dialog: MatDialog,
+              private el: ElementRef,
+              private messageService: MessagesService, 
+              private chatservice: ChatService) {}
 
   ngOnInit() {
     this.counter = 0;
@@ -46,7 +50,6 @@ export class AppComponent implements OnInit, OnDestroy{
   private receiveSlackMessage() {
     this.connection = this.chatservice.getMessages().subscribe(message => {
       const MESSAGE: Message = new Message(++this.counter, message['username'], message['message'], false);
-      // this.messagesS.push(MESSAGE);
       this.messageService.addMessage(MESSAGE);
     });
   }
@@ -71,5 +74,4 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnDestroy() {
     this.connection.unsubscribe();
   }
-
 }

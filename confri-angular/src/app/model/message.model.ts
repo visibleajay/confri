@@ -10,7 +10,7 @@ export class Message {
         this.id = _id;
         this.user = _user;
         this.text = _text;
-        this.sentAt = _sentAt || new Date();
         this.sender = _sender;
+        this.sentAt = _sentAt || new Date();
     }
 }
