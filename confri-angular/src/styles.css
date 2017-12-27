@@ -14,19 +14,10 @@
     font-size: 12px;
 }
 
-.overflowYScroll {
-    overflow-y: scroll;
-}
-
 .overflowBreakWord {
     overflow-wrap: break-word;
 }
 
 .textAlignStart{
     text-align:start
-}
-
-/* removing default styles of list */
-.mat-list .mat-list-item {
-    height: auto !important;
 }
