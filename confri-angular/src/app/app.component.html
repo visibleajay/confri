@@ -2,10 +2,6 @@
   <div class="appBorder" style="background-color: #eaefb1;" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
     Chat Window  
   </div>
-  <mat-list role="list" class="appBorder overflowYScroll msg-container" style="background-color: #eaeaea;" fxFlex>
-    <mat-list-item role="listitem" class="marginTopBottom" *ngFor="let message of messages | async">
-      <app-chat-window fxFlex [message]="message"></app-chat-window>
-    </mat-list-item>
-  </mat-list>
-  <input-message (enterMessage)="sentMessage($event.target.value)"></input-message>
+  <display-message class="overflowYHidden" fxFlex [messages]="messageList | async"></display-message>
+  <input-message fxFlex="10" (enterMessage)="sentMessage($event.target.value)"></input-message>
 </div>

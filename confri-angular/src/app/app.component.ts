@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   private counter:number;
   username: String;
-  messages: Observable<Message[]>;
+  messageList: Observable<Message[]>;
   connection;
 
   constructor(public dialog: MatDialog,
@@ -30,9 +30,9 @@ export class AppComponent implements OnInit, OnDestroy{
     this.counter = 0;
     this.openDialog();
     this.receiveSlackMessage();
-    this.messages = this.messageService.messages;
+    this.messageList = this.messageService.messages;
 
-    this.messages
+    this.messageList
     .subscribe(
       (messages: Array<Message>) => {
         setTimeout(() => {
