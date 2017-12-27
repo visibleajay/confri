@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule, MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
- 
+
 import { AppComponent } from './app.component';
 import { UserNameDialogComponent } from './user-name-dialog/user-name-dialog.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
@@ -34,7 +34,8 @@ import {MessagesService} from './service/message.service';
     MatInputModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ],
   providers: [ChatService, MessagesService],
   bootstrap: [AppComponent]

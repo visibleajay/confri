@@ -2,11 +2,11 @@
   <div class="appBorder" style="background-color: #eaefb1;" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
     Chat Window  
   </div>
-  <div class="appBorder overflowYScroll msg-container" style="background-color: #eaeaea;" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <div style="width:90%; margin: 5px 0px;" *ngFor="let message of messages | async">
-      <app-chat-window [message]="message"></app-chat-window>
-    </div>
-  </div>
+  <mat-list role="list" class="appBorder overflowYScroll msg-container" style="background-color: #eaeaea;" fxFlex>
+    <mat-list-item role="listitem" class="marginTopBottom" *ngFor="let message of messages | async">
+      <app-chat-window fxFlex [message]="message"></app-chat-window>
+    </mat-list-item>
+  </mat-list>
   <div style="background-color: #dae3e5;" class="appBorder" fxLayout="row" fxLayoutAlign="center center" fxFlex="10">
     <input fxFlex="70" type="text" #message placeholder="Type Message" (keyup.enter)="postMessages(message.value); message.value=''" />
     <button mat-button color="primary" (click)="postMessages(message.value); message.value=''" >Send</button>
