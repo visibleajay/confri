@@ -1,0 +1,16 @@
+.marginTopBottom {
+    margin: 1em 0em;
+}
+
+.parentHeightDimensions {
+    height: 100%;
+}
+
+.overflowYScroll {
+    overflow-y: scroll;
+} 
+
+/* removing default styles of list */
+.mat-list .mat-list-item {
+    height: auto !important;
+}

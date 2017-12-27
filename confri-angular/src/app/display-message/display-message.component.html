@@ -1,0 +1,5 @@
+<mat-list role="list" class="parentHeightDimensions overflowYScroll appBorder msg-container" style="background-color: #eaeaea;">
+    <mat-list-item role="listitem" class="marginTopBottom" *ngFor="let message of messages">
+        <app-chat-window fxFlex [message]="message"></app-chat-window>
+    </mat-list-item>
+</mat-list>
