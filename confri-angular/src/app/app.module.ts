@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { UserNameDialogComponent } from './user-name-dialog/user-name-dialog.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
+import { InputMessageComponent } from './input-message/input-message.component';
+
 import { FromNowPipe } from './pipes/from-now.pipe';
 
 
@@ -20,6 +22,7 @@ import {MessagesService} from './service/message.service';
     AppComponent,
     UserNameDialogComponent,
     ChatWindowComponent,
+    InputMessageComponent,
     FromNowPipe
   ],
   entryComponents: [

@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy{
     }, 0);
   }
 
-  postMessages(message: String) {
+  sentMessage(message: string) {
     const MESSAGE: Message = new Message(++this.counter, this.username, message, true);
     this.messageService.addMessage(MESSAGE);
     this.chatservice.sendMessage(message, this.username);

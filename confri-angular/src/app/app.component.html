@@ -7,8 +7,5 @@
       <app-chat-window fxFlex [message]="message"></app-chat-window>
     </mat-list-item>
   </mat-list>
-  <div style="background-color: #dae3e5;" class="appBorder" fxLayout="row" fxLayoutAlign="center center" fxFlex="10">
-    <input fxFlex="70" type="text" #message placeholder="Type Message" (keyup.enter)="postMessages(message.value); message.value=''" />
-    <button mat-button color="primary" (click)="postMessages(message.value); message.value=''" >Send</button>
-  </div>
+  <input-message (enterMessage)="sentMessage($event.target.value)"></input-message>
 </div>
