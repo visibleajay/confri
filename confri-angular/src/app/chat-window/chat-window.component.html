@@ -1,11 +1,11 @@
-<mat-card class="textAlignStart" [ngClass]="{'marginLeft': message.sender, 'marginRight': !message.sender}">
+<mat-card class="textAlignStart" [ngClass]="{'marginLeft': !message.incoming, 'marginRight': message.incoming}">
   <div fxLayout="column">
     <div fxFlex="80" class="overflowBreakWord">
       {{message.text}}
     </div>
     <div fxFlex fxLayout="column" fxLayoutAlign="end end">    
       <div fxFlex>
-        {{message.user}}
+        {{message.sender}}
       </div>
       <div class="timeStyle" fxFlex="20">
         {{message.sentAt | fromNow}}
