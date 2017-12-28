@@ -6,16 +6,20 @@ import * as io from 'socket.io-client';
 
 @Injectable()
 export class ChatService {
-  private url = 'http://localhost:5000';  
+  private url = 'http://localhost:5000';
   private socket;
   
   // send message to the server.
-  sendMessage(text, username){
-    const MESSAGE_BODY = {
-      text,
-      username
-    }
-    this.socket.emit('add-message', MESSAGE_BODY);    
+  sendMessage(payload, responseCallBack, errorcallback ){
+    this.socket.emit('add-message', payload, (error, message) => {
+      console.log(error);
+      console.log(message);
+      if (error.response) {
+        errorcallback();
+      } else {
+        responseCallBack();
+      }
+    });
   }
   
   // receive message from the server.
