@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('add-message', (message) => {
+    socket.on('add-message', (message, callback) => {
         //  Build JSON to send to slack
         const PAYLOAD = {
             'attachments' : [
@@ -41,14 +41,18 @@ io.on('connection', (socket) => {
                     "text"	: message['text']
                 }
             ]
-        }
-        webhook.send(PAYLOAD, function(err, header, statusCode, body) {
-            if (err) {
-              console.log('Error:', err);
-            } else {
-              console.log('Received', statusCode, 'from Slack');
-            }
-        });
+				}
+				let acknowledgment = '';
+				webhook.send(PAYLOAD, function(err, header, statusCode, body) {
+					if (err) {
+						console.log('Error:', err);
+						acknowledgment = 'error';
+					} else {
+						console.log('Received', statusCode, 'from angular');
+						acknowledgment = 'success';
+					}
+					if (callback) callback({'message': acknowledgment});
+				});
     });
 });
 

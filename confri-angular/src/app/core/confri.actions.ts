@@ -54,8 +54,7 @@ export class ConfriActions {
 								text: payload.text, 
 								username: payload.username
 							}, 
-							this.ngRedux.dispatch(this.updateMessageState({id: payload.id, state: 'success'})),
-							this.ngRedux.dispatch(this.updateMessageState({id: payload.id, state: 'error'}))
+							(message: string) => {this.ngRedux.dispatch(this.updateMessageState({id: payload.id, state: message}))}
 					);
 	}
 

@@ -10,15 +10,9 @@ export class ChatService {
   private socket;
   
   // send message to the server.
-  sendMessage(payload, responseCallBack, errorcallback ){
-    this.socket.emit('add-message', payload, (error, message) => {
-      console.log(error);
-      console.log(message);
-      if (error.response) {
-        errorcallback();
-      } else {
-        responseCallBack();
-      }
+  sendMessage(payload, callback ){
+    this.socket.emit('add-message', payload, (result) => {
+      callback(result.message);      
     });
   }
   
@@ -29,7 +23,7 @@ export class ChatService {
     let observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('message', (data) => {
-        observer.next(data);    
+        observer.next(data);
       });
       return () => {
         this.socket.disconnect();
