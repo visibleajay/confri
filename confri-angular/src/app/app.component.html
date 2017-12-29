@@ -3,5 +3,5 @@
     Chat Window  
   </div>
   <display-message class="overflowYHidden" fxFlex [messages]="messageList$ | async"></display-message>
-  <input-message fxFlex="10" (enterMessage)="sentMessage($event.target.value)"></input-message>
+  <input-message fxFlex="10" (enterMessage)="sentMessage($event)"></input-message>
 </div>
