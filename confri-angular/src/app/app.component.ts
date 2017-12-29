@@ -33,7 +33,8 @@ export class AppComponent implements OnInit{
 
   private openDialog() {
     setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
-      width: '250px'
+      width: '250px',
+      disableClose: true
     });
 
     DIALOG_REF.afterClosed().subscribe((result) => {
@@ -44,15 +45,16 @@ export class AppComponent implements OnInit{
   }
 
   sentMessage(message: string) {
-    const MESSAGE: IfcMessage = {
-      id: ConfriActions.COUNTER++,
-      text: message,
-      incoming: false,
-      sender: this.username,
-      time: new Date(),
-      state: 'pending'
-
-    };
-    this.confriActions.postMessage(MESSAGE);
+      const MESSAGE: IfcMessage = {
+        id: ConfriActions.COUNTER++,
+        text: message,
+        incoming: false,
+        sender: this.username,
+        time: new Date(),
+        state: 'pending'
+  
+      };
+      this.confriActions.postMessage(MESSAGE);
+    }
   }
 }

@@ -6,5 +6,5 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions class="floatRight">
-  <button mat-button (click)="closeDialog(username.value)" color="primary">Ok</button>
+  <button [disabled] = "!username.value" mat-button (click)="closeDialog(username.value)" color="primary">Ok</button>
 </mat-dialog-actions>
