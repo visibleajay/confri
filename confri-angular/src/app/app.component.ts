@@ -44,7 +44,8 @@ export class AppComponent implements OnInit{
     }, 0);
   }
 
-  sentMessage(message: string) {
+  sentMessage(message: String) {
+    if ( message.length ) {
       const MESSAGE: IfcMessage = {
         id: ConfriActions.COUNTER++,
         text: message,
@@ -52,7 +53,6 @@ export class AppComponent implements OnInit{
         sender: this.username,
         time: new Date(),
         state: 'pending'
-  
       };
       this.confriActions.postMessage(MESSAGE);
     }
