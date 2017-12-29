@@ -37,7 +37,7 @@ export class AppComponent implements OnInit{
     });
 
     DIALOG_REF.afterClosed().subscribe((result) => {
-      this.confriActions.username(result);
+      this.confriActions.addUserName(result);
       this.username = result;
       });
     }, 0);

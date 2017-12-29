@@ -42,6 +42,9 @@ export class ConfriActions {
 		}
 	}
 
+	addUserName(name: string){
+		this.ngRedux.dispatch(this.username(name))
+	}
 
 	postMessage(payload) {
 		this.ngRedux.dispatch(this.addMessage(payload));
