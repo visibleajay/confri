@@ -21,6 +21,10 @@ import {MessagesService} from './service/message.service';
 import { rootReducer, IfcConfriState, INITIAL_CONFRI_STATE } from './core/confri.state';
 import { ConfriActions } from './core/confri.actions';
 
+import logger from 'redux-logger';
+
+// import { APISocketMiddleware } from './core/api.socket.middleware';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +64,7 @@ export class AppModule {
       .configureStore(
             rootReducer,
             INITIAL_CONFRI_STATE,
-            [],
+            [logger],
             storeEnhancers
       );
   }
