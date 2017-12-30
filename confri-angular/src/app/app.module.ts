@@ -15,8 +15,7 @@ import { DisplayMessageComponent } from './display-message/display-message.compo
 
 import { FromNowPipe } from './pipes/from-now.pipe';
 
-import {ChatService} from './service/chat.service';
-import {MessagesService} from './service/message.service';
+import { ChatService } from './service/chat.service';
 
 import { rootReducer, IfcConfriState, INITIAL_CONFRI_STATE } from './core/confri.state';
 import { ConfriActions } from './core/confri.actions';
@@ -50,7 +49,7 @@ import logger from 'redux-logger';
     MatListModule,
     NgReduxModule
   ],
-  providers: [ChatService, MessagesService, ConfriActions],
+  providers: [ChatService, ConfriActions],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
