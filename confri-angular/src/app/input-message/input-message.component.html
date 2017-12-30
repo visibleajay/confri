@@ -1,4 +1,4 @@
 <div style="background-color: #dae3e5;" class="appBorder parentHeightDimensions" fxLayout="row" fxLayoutAlign="center center">
-    <input fxFlex="70" type="text" #inputMessage placeholder="Type Message" (keyup.enter)="this.enterMessage.emit(inputMessage.value); inputMessage.value=''" >
+    <input fxFlex="70" type="text" #inputMessage placeholder="Type Message" (keyup.enter)="this.enterMessage.emit(inputMessage.value); inputMessage.value=''" (input)="null" />
     <button [disabled] = "!inputMessage.value" (click)="this.enterMessage.emit(inputMessage.value); inputMessage.value=''" >Send</button>
 </div>
