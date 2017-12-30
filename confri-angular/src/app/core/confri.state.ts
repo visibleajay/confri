@@ -28,32 +28,15 @@ export function rootReducer(lastState, action): IfcConfriState {
 	switch(action.type) {
 		case ConfriActions.USERNAME:
 			return lastState.set('username', action.username);
-			// return {
-			// 	...lastState,
-			// 	username: action.username
-			// };
 		case ConfriActions.ADD_MESSAGE:
 			return lastState.updateIn(['messageList'], messageList => messageList.push(action.message));
-			// return {
-			// 	username: lastState.username,
-			// 	messageList: [...lastState.messageList, action.message]	
-			// };
 		case ConfriActions.UPDATE_MESSAGE_STATE:
 			return lastState.updateIn(['messageList'], list =>  list.map( (message) => {
 						if ( message.id === action.payload.id){
-							message['state'] = action.payload.id
+							message['state'] = action.payload.state
 						}
 						return message;
 					}));
-			// return {
-			// 	...lastState,
-			// 	messageList: lastState.messageList.map( (message) =>{
-			// 		if ( message.id === action.payload.id ) {
-			// 			message['state'] = action.payload.state;
-			// 		}
-			// 		return message;
-			// 	})
-			// };
 		default:
 			return newState;
 	}
