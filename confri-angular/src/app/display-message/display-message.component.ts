@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Message } from '../model/message.model';
+import { IfcMessage } from '../core/confri.state';
 
 @Component({
     selector: 'display-message',
@@ -8,5 +8,5 @@ import { Message } from '../model/message.model';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DisplayMessageComponent {
-    @Input() messages: Message[];
+    @Input() messages: IfcMessage[];
 }

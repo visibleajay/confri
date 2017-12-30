@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {Message} from '../model/message.model';
+import { IfcMessage } from '../core/confri.state';
 
 @Component({
   selector: 'app-chat-window',
@@ -7,5 +7,5 @@ import {Message} from '../model/message.model';
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent {
-  @Input() message: Message;
+  @Input() message: IfcMessage;
 }
