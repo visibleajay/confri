@@ -8,7 +8,7 @@
         {{message.sender}}
       </div>
       <div fxLayout="row" class="timeStyle" fxFlex="30" fxLayoutAlign="center center">
-        <span class="dot"></span>
+        <span class="dot" [style.background-color]="message.state === 'pending' ? '#ecdd7b' : message.state === 'success' ? '#7dce82' : '#de1a1a'"></span>
         <div>{{message.sentAt | fromNow}}</div>
       </div>
     </div>
