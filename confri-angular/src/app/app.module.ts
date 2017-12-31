@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule, MatInputModule, MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { UserNameDialogComponent } from './user-name-dialog/user-name-dialog.component';
@@ -47,7 +48,8 @@ import logger from 'redux-logger';
     FlexLayoutModule,
     MatCardModule,
     MatListModule,
-    NgReduxModule
+    NgReduxModule,
+    MomentModule
   ],
   providers: [ChatService, ConfriActions],
   bootstrap: [AppComponent]
