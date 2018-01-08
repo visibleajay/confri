@@ -25,12 +25,6 @@ export class AppComponent implements OnInit{
     this.openDialog();
   }
 
-  // private scrollToBottom() {
-  //   const scrollPane: any = this.el
-  //           .nativeElement.querySelector('.msg-container');
-  //   scrollPane.scrollTop = scrollPane.scrollHeight;
-  // }
-
   private openDialog() {
     setTimeout( () => {const DIALOG_REF: MatDialogRef<UserNameDialogComponent> = this.dialog.open(UserNameDialogComponent, {
       width: '250px',
