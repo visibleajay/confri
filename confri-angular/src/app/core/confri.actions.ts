@@ -52,7 +52,7 @@ export class ConfriActions {
 		this.chatService.sendMessage(
 							{
 								text: payload.text, 
-								username: payload.username
+								username: payload.sender
 							}, 
 							(message: string) => {this.ngRedux.dispatch(this.updateMessageState({id: payload.id, state: message}))}
 					);
